@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
-// Obtiene las coordenadas de la ciudad
+// Obtiene las coordenadas de la ciudad a partir de API de google
 async function coordinatesFromCity(city) {
     const geocodeResponse = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
         params: {
@@ -15,7 +15,7 @@ async function coordinatesFromCity(city) {
     if (geocodeData.status !== 'OK') {
         throw new Error('No se pudo encontrar la ciudad proporcionada.');
     }
-
+    // Coordenadas de la ciudad
     return geocodeData.results[0].geometry.location;
 }
 
@@ -35,7 +35,7 @@ async function nearbyRestaurants(location) {
     if (placesData.status !== 'OK') {
         throw new Error('No se pudieron encontrar restaurantes cercanos.');
     }
-
+    // Objeto devuelto al controller con información de los restaurantes
     return placesData.results.map((place) => ({
         name: place.name,
         address: place.vicinity,

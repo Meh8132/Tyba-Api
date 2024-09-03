@@ -1,5 +1,6 @@
 const { coordinatesFromCity, nearbyRestaurants } = require('../services/restaurantesService');
 
+// Procesa respuesta por parte de la API de Google
 async function obtenerRestaurantesCercanos(req, res) {
     const { city, coordinates } = req.body;
 
@@ -12,7 +13,7 @@ async function obtenerRestaurantesCercanos(req, res) {
         } else {
             return res.status(400).json({ error: 'Debe proporcionar una ciudad o coordenadas.' });
         }
-
+        
         const restaurantes = await nearbyRestaurants(location);
         res.json({ restaurantes });
     } catch (error) {

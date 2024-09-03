@@ -3,7 +3,7 @@ const { obtenerRestaurantesCercanos } = require('../controllers/restaurantesCont
 
 const router = express.Router();
 
-// Ruta para obtener restaurantes cercanos
+// Ruta para obtener restaurantes 
 router.post('/', obtenerRestaurantesCercanos);
 
 module.exports = router;
