@@ -20,7 +20,13 @@ docs for more detail on building and pushing.
 
 ### References
 * [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
-
+## Variables de entorno
+Las variables de entorno necesarias son:
+```
+GOOGLE_API_KEY= {GOOGLE_API_KEY}
+JWT_SECRET= {JWT_SECRET}
+DATABASE_URL= {postgres://postgres:CHGjcu@localhost:5434/tybaDB}
+```
 ## Ejecutar localmente
 Para ejecutar localmente sin usar docker primero es necesario instalar las dependencias usando
 
