@@ -27,9 +27,9 @@ async function loginUser(email, password) {
     if (!isMatch) {
         throw new Error('Credenciales inválidas');
     }
-
+    // Token generado en login
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '1h',
+        expiresIn: '1h',    // Logout automático, el token expira en una hora
     });
 
     return token;

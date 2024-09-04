@@ -20,4 +20,6 @@ const Query = sequelize.define('Query', {
 
 Query.belongsTo(User, { foreignKey: 'userId' });
 
+// Hace los cambios necesarios para que la base de datos coincida con el modelo
+//sequelize.sync({ alter: true })
 module.exports = Query;

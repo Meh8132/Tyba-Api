@@ -1,4 +1,4 @@
-const { coordinatesFromCity, nearbyRestaurants } = require('../services/restaurantesService');
+const { coordinatesFromCity, nearbyRestaurants, getQueries } = require('../services/restaurantesService');
 
 // Procesa respuesta por parte de la API de Google
 async function obtenerRestaurantesCercanos(req, res) {
@@ -22,6 +22,20 @@ async function obtenerRestaurantesCercanos(req, res) {
     }
 }
 
+
+async function obtenerConsultasRealizadas(req, res) {
+    const userEmail = req.user.email; // ID del usuario autenticado
+
+    try {
+        const consultas = await getQueries(userEmail);
+        res.json({ consultas });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error interno del servidor.' });
+    }
+}
+
 module.exports = {
     obtenerRestaurantesCercanos,
+    obtenerConsultasRealizadas
 };

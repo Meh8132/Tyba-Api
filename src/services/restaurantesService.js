@@ -1,4 +1,5 @@
 const axios = require('axios');
+const Query = require('../models/query');
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
@@ -35,6 +36,15 @@ async function nearbyRestaurants(location) {
     if (placesData.status !== 'OK') {
         throw new Error('No se pudieron encontrar restaurantes cercanos.');
     }
+
+    // Almacena la consulta, funcionalidad no terminada
+    // await Query.create({
+    //     userId,
+    //     city,
+    //     coordinates,
+    //     restaurantes,
+    // });
+
     // Objeto devuelto al controller con información de los restaurantes
     return placesData.results.map((place) => ({
         name: place.name,
@@ -43,7 +53,17 @@ async function nearbyRestaurants(location) {
     }));
 }
 
+// Función que devuelve las consultas hechas por un usuario
+async function getQueries(userEmail) {
+    const consultas = await Query.findAll({
+        where: { userEmail },
+        order: [['createdAt', 'DESC']],
+    });
+
+    return consultas;
+}
 module.exports = {
     coordinatesFromCity,
     nearbyRestaurants,
+    getQueries
 };

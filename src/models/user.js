@@ -33,4 +33,6 @@ User.beforeUpdate(async (user, options) => {
     }
   });
 
+// Hace los cambios necesarios para que la base de datos coincida con el modelo
+sequelize.sync({ alter: true })
 module.exports = User;
