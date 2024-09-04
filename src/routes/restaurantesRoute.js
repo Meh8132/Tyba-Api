@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 
 const router = express.Router();
 
-// Ruta para obtener restaurantes 
+// Ruta para obtener restaurantes (requiere autorización)
 router.post('/', auth, obtenerRestaurantesCercanos);
 
 module.exports = router;

@@ -9,8 +9,7 @@ async function registerUser(email, password) {
     if (userExists) {
         throw new Error('El usuario ya existe');
     }
-
-    const user = await User.create({ email, password });
+    const user = await User.create({ email, password});
     return user;
 }
 
@@ -21,6 +20,8 @@ async function loginUser(email, password) {
     if (!user) {
         throw new Error('Credenciales inválidas');
     }
+
+    // Compara la contraseña con su hash 
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {

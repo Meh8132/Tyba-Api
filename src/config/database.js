@@ -1,11 +1,9 @@
 const { Sequelize } = require('sequelize');
+const DATABASE_URL = process.env.DATABASE_URL
 
 // Conexión a base de datos
 
-const sequelize = new Sequelize('tybaDB', 'tybaDB', 'CHGjcu02*', {
-    host: 'localhost',
-    dialect: 'postgres',
-});
+const sequelize = new Sequelize(DATABASE_URL, {dialect: 'postgres'});
 
 // Test de conexión a la base de datos
 

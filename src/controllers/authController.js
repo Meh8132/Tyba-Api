@@ -9,7 +9,6 @@ const register = async (req, res) => {
         await registerUser(email, password);
         res.status(201).json({ message: 'Usuario registrado con éxito' });
     } catch (error) {
-        console.error(error);
         res.status(400).json({ message: error.message });
     }
 };
@@ -21,9 +20,9 @@ const login = async (req, res) => {
 
     try {
         const token = await loginUser(email, password);
+        // Token para autenticación 
         res.json({ token });
     } catch (error) {
-        console.error(error);
         res.status(400).json({ message: error.message });
     }
 };

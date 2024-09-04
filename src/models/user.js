@@ -17,12 +17,20 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
 }, {
-    hooks: {
-        beforeCreate: async (user) => {             // Genera hash de la contraseña y salt usado para el hash
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(user.password, salt);
-        },
-    },
+    tableName: 'user'
 });
+
+// Hasheo de las contraseñas
+User.beforeCreate(async (user, options) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+  });
+  
+User.beforeUpdate(async (user, options) => {
+    if (user.changed('password')) {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(user.password, salt);
+    }
+  });
 
 module.exports = User;
