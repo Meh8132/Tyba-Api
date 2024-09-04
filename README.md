@@ -33,3 +33,7 @@ Luego es necesario levantar la base de datos usando
 Finalmente, se puede ejecutar usando 
 
 ```npm run start```
+
+## Documentación de API:
+
+El link de la documentación y las peticiones usadas como prueba es: https://documenter.getpostman.com/view/21069316/2sAXjNZXGC
