@@ -23,8 +23,8 @@ docs for more detail on building and pushing.
 
 ## Ejecutar localmente
 Para ejecutar localmente sin usar docker primero es necesario instalar las dependencias usando
-`npm install`
+```npm install```
 Luego es necesario levantar la base de datos usando 
-`docker compose up db -d`
+```docker compose up db -d```
 Finalmente, se puede ejecutar usando 
-`npm run start`
+```npm run start```
